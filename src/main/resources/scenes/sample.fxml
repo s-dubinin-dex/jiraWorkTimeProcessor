@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+      <VBox>
+            <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0">
+               <Label prefWidth="85.0" text="Файл импорта:" />
+               <TextField fx:id="csvTimeSheetSourceFile" alignment="CENTER" editable="false" promptText="путь к csv файлу из jira" HBox.hgrow="ALWAYS" />
+               <Button id="chooseSourceFileButton" fx:id="chooseCSVSourceFile" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlerChooseCSVSourceFile" prefWidth="100.0" text="Выбрать файл" />
+            </HBox>
+            <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" spacing="5.0">
+                <Label prefWidth="85.0" text="Путь выгрузки:" HBox.hgrow="ALWAYS" />
+                <TextField fx:id="xlsxTimeSheetDestinationFolder" alignment="CENTER" editable="false" promptText="путь к результату" HBox.hgrow="ALWAYS" />
+                <Button id="chooseDestinationFileButton" mnemonicParsing="false" onAction="#handlerChooseXLSXDestinationFolder" prefWidth="100.0" text="Выбрать папку" />
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" VBox.vgrow="ALWAYS">
+                  <Button id="processFileButton" mnemonicParsing="false" onAction="#handlerProcessFile" text="Обработать" HBox.hgrow="ALWAYS" />
+            </HBox>
+      </VBox>
+</Pane>
