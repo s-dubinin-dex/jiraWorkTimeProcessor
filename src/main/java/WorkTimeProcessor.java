@@ -32,7 +32,7 @@ public class WorkTimeProcessor {
         workSheetWorkTimeRecords = readCSVFile();
         if (workSheetWorkTimeRecords == null){
             // TODO: проверить алерт
-            WorKTimeApplication.showAlert(Alert.AlertType.ERROR, "Ошибка", "CSV файл не содержит данных для обработки");
+            WorkTimeApplication.showAlert(Alert.AlertType.ERROR, "Ошибка", "CSV файл не содержит данных для обработки");
             return;
         }
         workSheetWorkTimeRecords.sort(Comparator.comparing(WorkTimeRecord::getDate));

@@ -49,18 +49,18 @@ public class Controller {
         String fileName = "output.xlsx";
 
         if (csvTimeSheetSourcePath == null || csvTimeSheetSourcePath.isEmpty()){
-            WorKTimeApplication.showAlert(Alert.AlertType.ERROR, "Ошибка", "Не выбран CSV файл");
+            WorkTimeApplication.showAlert(Alert.AlertType.ERROR, "Ошибка", "Не выбран CSV файл");
             return;
         }
 
         if (xlsxTimeSheetDestinationFolderPath == null || xlsxTimeSheetDestinationFolderPath.isEmpty()){
-            WorKTimeApplication.showAlert(Alert.AlertType.ERROR, "Ошибка", "Не выбран путь сохранения");
+            WorkTimeApplication.showAlert(Alert.AlertType.ERROR, "Ошибка", "Не выбран путь сохранения");
             return;
         }
 
         WorkTimeProcessor workTimeProcessor = new WorkTimeProcessor(csvTimeSheetSourcePath, xlsxTimeSheetDestinationFolderPath, fileName);
         workTimeProcessor.processCSVFile();
 
-        WorKTimeApplication.showAlert(Alert.AlertType.WARNING, "Успешно", "Файл успешно обработан");
+        WorkTimeApplication.showAlert(Alert.AlertType.WARNING, "Успешно", "Файл успешно обработан");
     }
 }
