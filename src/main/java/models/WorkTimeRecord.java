@@ -13,6 +13,7 @@ public class WorkTimeRecord {
     private String description;
     private Date date;
     private float workedHours;
+    private String issueSummary;
 
     public String getDateWithFormat(String dateFormat){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);

@@ -53,8 +53,9 @@ public class WorkTimeProcessor {
                 String description = csvRecord.get("description");
                 Date date = dateFormatterFromCSV.parse(csvRecord.get("date"));
                 float workedHours = (float) Integer.parseInt(csvRecord.get("spentTime")) / (60 * 60);
+                String issueSummary = csvRecord.get("issueSummary");
 
-                workSheetWorkTimeRecords.add(new WorkTimeRecord(issueKey, description, date, workedHours));
+                workSheetWorkTimeRecords.add(new WorkTimeRecord(issueKey, description, date, workedHours, issueSummary));
             }
             return workSheetWorkTimeRecords;
         } catch (ParseException | IOException e) {
@@ -75,6 +76,7 @@ public class WorkTimeProcessor {
         sheet.setColumnWidth(1, 5 * 256);
         sheet.setColumnWidth(2, 15 * 256);
         sheet.setColumnWidth(3, 10 * 256);
+        sheet.setColumnWidth(4, 10 * 256);
 
         Row header = sheet.createRow(0);
         //TODO: сделать заголовки жирными
@@ -84,6 +86,7 @@ public class WorkTimeProcessor {
         header.createCell(1, CellType.STRING).setCellValue("Часы");
         header.createCell(2, CellType.STRING).setCellValue("Дата");
         header.createCell(3, CellType.STRING).setCellValue("IssueKey");
+        header.createCell(3, CellType.STRING).setCellValue("IssueSummary");
 
 
         int rowDataIndex = 1;
@@ -93,6 +96,7 @@ public class WorkTimeProcessor {
             row.createCell(1, CellType.NUMERIC).setCellValue(workTimeRecord.getWorkedHours());
             row.createCell(2, CellType.STRING).setCellValue(workTimeRecord.getDateWithFormat("dd.MM.yyy"));
             row.createCell(3, CellType.STRING).setCellValue(workTimeRecord.getIssueKey());
+            row.createCell(4, CellType.STRING).setCellValue(workTimeRecord.getIssueSummary());
             rowDataIndex++;
         }
 
